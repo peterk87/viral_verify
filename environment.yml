@@ -1,0 +1,16 @@
+name: viral_verify@0.1.0
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - prodigal=2.6.3
+  - hmmer=3.3
+  - python>=3.6
+  - pip
+  - pip:
+    - viral_verify=0.1.0
+    - biopython
+    - click
+    - attrs
+    - pandas
