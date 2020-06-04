@@ -29,7 +29,7 @@ def test_command_line_interface():
         outdir = 'outdir'
         hmm_db = 'Pfam-A-filtered-for-tests.hmm'
         with open(hmm_db, 'w') as f:
-            subprocess.call(['gunzip', '-c', hmm_db_gz.absolute()], stdout=f)
+            subprocess.run(['gunzip', '-c', hmm_db_gz.absolute()], stdout=f)
 
         result = runner.invoke(cli.main, ['-i', test_fasta.absolute(),
                                           '-o', outdir,

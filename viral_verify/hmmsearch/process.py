@@ -32,5 +32,8 @@ def run_hmmsearch(hmm_db: Union[str, Path, IO],
                 str(hmm_db), str(input_fasta)]
     cmd = ' '.join(cmd_list)
     logger.info(f'Running hmmsearch command: {cmd}')
-    sp.run(cmd_list, capture_output=True, check=True)
+    sp.run(cmd_list,
+           stdout=sp.PIPE,
+           stderr=sp.PIPE,
+           check=True)
     logger.info(f'Ran hmmsearch with tabular output at "{tblout}" and raw output at "{raw_output}"')

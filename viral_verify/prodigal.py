@@ -20,7 +20,8 @@ def prodigal_meta(input_fasta: Union[str, Path, IO],
     cmd = " ".join(cmd_list)
     logger.info(f'Running Prodigal gene prediction in metagenomic mode with command: {cmd}')
     sp.run(cmd_list,
-           capture_output=True,
+           stdout=sp.PIPE,
+           stderr=sp.PIPE,
            check=True)
     logger.info(f'Ran Prodigal gene prediction outputting protein sequences to '
                 f'"{proteins_fasta}" and nucleotide sequences to  "{genes_fasta}".')
