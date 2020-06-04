@@ -1,40 +1,30 @@
-# Config file for automatic testing at travis-ci.com
-
 language: python
 python:
-  - 3.8
-  - 3.7
-  - 3.6
-
-# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: 
-  - pip install -U tox-travis
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda install conda=4.8.3
-  # Useful for debugging any issues with conda
-  - conda info -a
-  - conda config --add channels defaults
-  - conda config --add channels conda-forge
-  - conda config --add channels bioconda
-  - conda install prodigal=2.6.3 hmmer=3.3
-
+- 3.8
+- 3.7
+- 3.6
+install:
+- pip install -U tox-travis
+- wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+- bash miniconda.sh -b -p $HOME/miniconda
+- export PATH="$HOME/miniconda/bin:$PATH"
+- hash -r
+- conda config --set always_yes yes --set changeps1 no
+- conda install conda=4.8.3
+# Useful for debugging any issues with conda
+- conda info -a
+- conda config --add channels defaults
+- conda config --add channels conda-forge
+- conda config --add channels bioconda
+- conda install prodigal=2.6.3 hmmer=3.3
 # Command to run tests, e.g. python setup.py test
 script: tox
-
-# Assuming you have installed the travis-ci CLI tool, after you
-# create the Github repo and add it to Travis, run the
-# following command to finish PyPI deployment setup:
-# $ travis encrypt --add deploy.password
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
   user: peterk87
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: U98uRsu0RVrn3N1MDJEb4+4leYQIt6opAohmE9OA2vrTf70hvg6mDvBCUo/NWnKdEHoiRK1BcTpJ3bHQNqX0maaAUm1nHavHFCz4snWp1D6JIQTmlNBfYM2Ycucs3/qmKX27nvWi2anc872WhHcVDBQkVJssUjXDowFjuVVc2Kv0wW8vt3LbtDMot47r8+KLf7Fqzz3S646dVNtsaKshUBuAzYEE6m5s6FRlewrKK0LPtSOvmGyDhyTE7SSYVp6uhjRoxgsSLUg2NIrOyDrQdzwlmcD8CqhSPIiRMPWikc98ZORj169IJZNn75k8c4iozrnlPKeZ3UoA+Mg9M/ynIOL0WP2eaGrsOMCQGOG5m62aZvci0QcqQ0VF6IEBS7F3H4jrVcjl+3rjPrw1QKIikLjyaIL5fMyPU6d6ajNgWx/dF/YO7JY1FMe4sQor4v0ck9VCA680HjGIIRgu6O3FtwzyDsXB1HmvFcVuYu0mhmQp7BzaYM4LY/Iz39u6s1W+h/jLZR7qsc75GNcEBOKXbJlBV1VvUShbSs5ghvdhco/B6aW2fBSP93+zffdjo0dj8g5q2O4mEIbulB249eu9vm725XY110gdYqSwoVVlt3ytst7njPVHNmxwjB7hfWIDe0UuJ3GuMGdEzGMvHh+533BRV/YBwQdF9/I7qFM7vL0=
   on:
     tags: true
     repo: peterk87/viral_verify
