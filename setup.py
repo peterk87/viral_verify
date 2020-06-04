@@ -46,10 +46,11 @@ setup(
     keywords='viral_verify',
     name='viral_verify',
     packages=find_packages(include=['viral_verify', 'viral_verify.*']),
+    package_data={'viral_verify': ['data/classifier_table.txt', ]},
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/peterk87/viral_verify',
-    version='0.1.0',
+    version='0.1.1',
     zip_safe=False,
 )

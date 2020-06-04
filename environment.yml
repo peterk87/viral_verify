@@ -1,4 +1,4 @@
-name: viral_verify@0.1.0
+name: viral_verify@0.1.1
 channels:
   - conda-forge
   - bioconda
@@ -9,7 +9,7 @@ dependencies:
   - python>=3.6
   - pip
   - pip:
-    - viral_verify=0.1.0
+    - viral_verify=0.1.1
     - biopython
     - click
     - attrs
